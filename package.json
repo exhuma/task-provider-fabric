@@ -1,23 +1,29 @@
 {
-  "name": "task-provider-fabric",
+	"name": "task-provider-fabric",
 	"displayName": "task-provider-fabric",
 	"description": "Provides Tasks from invoke/fabric",
 	"version": "0.0.1",
 	"engines": {
-		"vscode": "^1.58.0"
+		"vscode": "^1.57.0"
 	},
 	"categories": [
 		"Other"
 	],
 	"activationEvents": [
-        "onCommand:task-provider-fabric.helloWorld"
+		"onCommand:workbench.action.tasks.runTask"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
-		"commands": [
+		"taskDefinitions": [
 			{
-				"command": "task-provider-fabric.helloWorld",
-				"title": "Hello World"
+				"type": "fabric",
+				"required": ["task"],
+				"properties": {
+					"task": {
+						"type": "string",
+						"description": "The fabric task to customize"
+					}
+				}
 			}
 		]
 	},
