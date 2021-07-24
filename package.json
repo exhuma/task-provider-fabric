@@ -36,6 +36,10 @@
 					"task": {
 						"type": "string",
 						"description": "The fabric task to customize"
+					},
+					"args": {
+						"type": "array",
+						"description": "Command line arguments"
 					}
 				}
 			}

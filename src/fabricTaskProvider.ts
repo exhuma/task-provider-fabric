@@ -25,6 +25,7 @@ export class FabricTaskProvider implements vscode.TaskProvider {
 	}
 
 	public resolveTask(_task: vscode.Task): vscode.Task | undefined {
+		console.log(`Resolving task ${_task.name} with args ${_task.definition.args}`);
 		const task = _task.definition.task;
 		// A Fabric task consists of a task and an optional file as specified in FabricTaskDefinition
 		// Make sure that this looks like a Fabric task by checking that there is a task.
@@ -36,7 +37,7 @@ export class FabricTaskProvider implements vscode.TaskProvider {
                 _task.scope ?? vscode.TaskScope.Workspace,
                 definition.task,
                 'fabric',
-                new vscode.ShellExecution(`fab ${definition.task}`)
+                new vscode.ShellExecution("fab", [definition.task].concat(definition.args)),
             );
 		}
 		return undefined;
@@ -76,6 +77,8 @@ interface FabricTaskDefinition extends vscode.TaskDefinition {
 	 */
 	task: string;
 
+	args: Array<string>;
+
 	/**
 	 * The fabfile containing the task
 	 */
@@ -113,14 +116,15 @@ async function getFabricTasks(): Promise<vscode.Task[]> {
                     const kind: FabricTaskDefinition = {
                         type: 'fabric',
                         task: taskInfo.name,
-                        description: taskInfo.help ?? ''
+                        description: taskInfo.help ?? '',
+						args: []
                     };
                     const task = new vscode.Task(
                         kind,
                         workspaceFolder,
                         taskInfo.name,
                         'fabric',
-                        new vscode.ShellExecution(`fab ${taskInfo.name}`)
+                        new vscode.ShellExecution("fab", [taskInfo.name])
                     );
                     result.push(task);
 				}
