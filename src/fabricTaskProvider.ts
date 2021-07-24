@@ -27,8 +27,6 @@ export class FabricTaskProvider implements vscode.TaskProvider {
 	public resolveTask(_task: vscode.Task): vscode.Task | undefined {
 		console.log(`Resolving task ${_task.name} with args ${_task.definition.args}`);
 		const task = _task.definition.task;
-		// A Fabric task consists of a task and an optional file as specified in FabricTaskDefinition
-		// Make sure that this looks like a Fabric task by checking that there is a task.
 		if (task) {
 			// resolveTask requires that the same definition object be used.
 			const definition: FabricTaskDefinition = <any>_task.definition;
