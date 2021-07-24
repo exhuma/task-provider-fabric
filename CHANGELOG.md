@@ -1,5 +1,7 @@
 # Change Log
 
-## [Unreleased]
+## 1.0.0-beta.1
 
 - Initial release
+- Support for task discovery in "fabfile.py" (customisable via settings)
+- Support for command-line arguments via task-configuration

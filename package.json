@@ -16,7 +16,8 @@
   },
   "displayName": "Task Provider for fabric",
   "description": "Provides tasks defined in a fabfile.py",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-beta.1",
+  "icon": "icon.png",
   "engines": {
     "vscode": "^1.56.0"
   },
