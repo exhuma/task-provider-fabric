@@ -12,12 +12,17 @@
   "license": "MIT",
   "readme": "README.md",
   "repository": {
+    "type": "git",
     "url": "https://github.com/exhuma/task-provider-fabric"
   },
   "displayName": "Task Provider for fabric",
-  "description": "Provides tasks defined in a fabfile.py",
+  "description": "Allows running task defined in a fabfile directly from VS-Code",
   "version": "1.0.0-beta.1",
   "icon": "icon.png",
+  "galleryBanner": {
+    "color": "#ffffff",
+    "theme": "light"
+  },
   "engines": {
     "vscode": "^1.56.0"
   },
