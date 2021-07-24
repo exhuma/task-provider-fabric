@@ -10,3 +10,10 @@ vsc-extension-quickstart.md
 **/.eslintrc.json
 **/*.map
 **/*.ts
+
+env/**
+example-workspace/**
+.pre-commit-config.yaml
+fabfile.py
+resources/demo.mkv
+resources/palette.png
