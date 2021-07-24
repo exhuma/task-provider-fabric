@@ -1,0 +1,6 @@
+---
+run:
+  echo: true
+
+someconfig:
+  somekey: 10
