@@ -88,6 +88,7 @@ interface FabricTaskDefinition extends vscode.TaskDefinition {
 }
 
 async function getFabricTasks(): Promise<vscode.Task[]> {
+	console.log("Retrieving fabric tasks");
 	const workspaceFolders = vscode.workspace.workspaceFolders;
 	const result: vscode.Task[] = [];
 	if (!workspaceFolders || workspaceFolders.length === 0) {
@@ -100,6 +101,7 @@ async function getFabricTasks(): Promise<vscode.Task[]> {
 		}
 		const fabricFile = path.join(folderString, 'fabfile.py');
 		if (!await exists(fabricFile)) {
+			console.log(`File ${fabricFile} not found!`);
 			continue;
 		}
 
@@ -107,10 +109,12 @@ async function getFabricTasks(): Promise<vscode.Task[]> {
 		try {
 			const { stdout, stderr } = await exec(commandLine, { cwd: folderString });
 			if (stderr && stderr.length > 0) {
+				console.error("Fetching fabric tasks caused an error!");
 				getOutputChannel().appendLine(stderr);
 				getOutputChannel().show(true);
 			}
 			if (stdout) {
+				console.log(stdout);
                 let tasks = JSON.parse(stdout);
 				for (const taskInfo of tasks.tasks) {
                     const kind: FabricTaskDefinition = {
@@ -126,8 +130,11 @@ async function getFabricTasks(): Promise<vscode.Task[]> {
                         'fabric',
                         new vscode.ShellExecution("fab", [taskInfo.name])
                     );
+					console.log(`Successfully detected task ${taskInfo.name}`);
                     result.push(task);
 				}
+			} else {
+				console.log("Task discovery for fabric generated no output!");
 			}
 		} catch (err) {
 			const channel = getOutputChannel();
