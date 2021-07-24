@@ -17,7 +17,7 @@
   },
   "displayName": "Task Provider for fabric",
   "description": "Allows running task defined in a fabfile directly from VS-Code",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0",
   "icon": "icon.png",
   "galleryBanner": {
     "color": "#ffffff",
