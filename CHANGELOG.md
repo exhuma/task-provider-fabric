@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.0.1
+
+- Make it easier to get in touch (more links added to the README)
+
 ## 1.0.0
 
 - Initial release
