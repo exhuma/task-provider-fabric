@@ -1,5 +1,17 @@
 # VS-Code Task Provider for fabric
 
+![GitHub](https://img.shields.io/github/license/exhuma/task-provider-fabric)
+[![GitHub issues](https://img.shields.io/github/issues/exhuma/task-provider-fabric)](https://github.com/exhuma/task-provider-fabric/issues)
+[![GitHub Repo stars](https://img.shields.io/github/stars/exhuma/task-provider-fabric?logo=github)](https://github.com/exhuma/task-provider-fabric)
+[![GitHub package.json version](https://img.shields.io/github/package-json/v/exhuma/task-provider-fabric?logo=github)](https://github.com/exhuma/task-provider-fabric)
+
+## Source Code, Issues & Feedback
+
+- [Repository](https://github.com/exhuma/task-provider-fabric)
+- [Issue Tracker](https://github.com/exhuma/task-provider-fabric/issues)
+
+## Description
+
 This extension provides VS-Code task executions for tasks defined using
 "fabric" (https://www.fabfile.org).
 
