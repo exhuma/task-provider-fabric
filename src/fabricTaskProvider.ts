@@ -34,9 +34,9 @@ export class FabricTaskProvider implements vscode.TaskProvider {
 			return new vscode.Task(
                 definition,
                 _task.scope ?? vscode.TaskScope.Workspace,
-                definition.name,
+                definition.task,
                 'fabric',
-                new vscode.ShellExecution(`fab ${definition.name}`)
+                new vscode.ShellExecution(`fab ${definition.task}`)
             );
 		}
 		return undefined;
@@ -74,7 +74,7 @@ interface FabricTaskDefinition extends vscode.TaskDefinition {
 	/**
 	 * The task name
 	 */
-	name: string;
+	task: string;
 
 	/**
 	 * The fabfile containing the task
@@ -112,7 +112,7 @@ async function getFabricTasks(): Promise<vscode.Task[]> {
 				for (const taskInfo of tasks.tasks) {
                     const kind: FabricTaskDefinition = {
                         type: 'fabric',
-                        name: taskInfo.name,
+                        task: taskInfo.name,
                         description: taskInfo.help ?? ''
                     };
                     const task = new vscode.Task(
